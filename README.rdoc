@@ -7,10 +7,7 @@ Description goes here.
   kissmetrics = Kissmetrics.new('api-key-here')
   kissmetrics.identify('user_identity')
   kissmetrics.alias('old_identity', 'new_identity')
-  kissmetrics.set({
-    'some property'    => 'some value',
-    'another property' => 'another value',
-  })
+  kissmetrics.set({ 'some property' => 'some value', 'another property' => 'another value' })
   kissmetrics.record('action', { 'Property' => 'Value' })
 
 == Contributing to kissmetrics
