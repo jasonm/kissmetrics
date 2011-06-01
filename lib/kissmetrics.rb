@@ -19,6 +19,13 @@ class Kissmetrics
     }))
   end
 
+  def alias(old_identity, new_identity)
+    request('/a', {
+      '_p' => old_identity,
+      '_n' => new_identity
+    })
+  end
+
   private
 
   def host

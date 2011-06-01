@@ -50,4 +50,18 @@ describe Kissmetrics do
       })
     end
   end
+
+  it "aliases a person" do
+    stub_request(:get, %r{https://trk.kissmetrics.com/a}).to_return(:body => "")
+
+    subject.alias('old_identity', 'new_identity')
+
+    WebMock.should have_requested(:get, "https://trk.kissmetrics.com/a").with({
+      :query => {
+        :_k => 'my-api-key',
+        :_p => 'old_identity',
+        :_n => 'new_identity'
+      }
+    })
+  end
 end
