@@ -4,14 +4,17 @@ Description goes here.
 
 == Usage
 
-  KM.init(api_key)
-  KM.identify('email@example.com')
-  KM.record('action', {:property => :value})
-  KM.set({:k => :v, :k2 => :v2})
-  KM.alias("name", "alias")
+  kissmetrics = Kissmetrics.new('api-key-here')
+  kissmetrics.identify('user_identity')
+  kissmetrics.alias('old_identity', 'new_identity')
+  kissmetrics.set({
+    'some property'    => 'some value',
+    'another property' => 'another value',
+  })
+  kissmetrics.record('action', { 'Property' => 'Value' })
 
 == Contributing to kissmetrics
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
