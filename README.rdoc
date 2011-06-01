@@ -1,6 +1,6 @@
 = kissmetrics
 
-Description goes here.
+This is a very simple wrapper around the KISSmetrics HTTP API: http://support.kissmetrics.com/apis/specifications
 
 == Usage
 
