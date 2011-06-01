@@ -26,6 +26,10 @@ class Kissmetrics
     })
   end
 
+  def set(properties)
+    request('/s', properties)
+  end
+
   private
 
   def host

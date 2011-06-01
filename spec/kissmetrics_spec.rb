@@ -64,4 +64,40 @@ describe Kissmetrics do
       }
     })
   end
+
+  it "sets properties when unidentified" do
+    stub_request(:get, %r{https://trk.kissmetrics.com/s}).to_return(:body => "")
+
+    subject.set({
+      'Button color'     => 'Blue',
+      'Background color' => 'Gray'
+    })
+
+    WebMock.should have_requested(:get, "https://trk.kissmetrics.com/s").with({
+      :query => {
+        :_k                => 'my-api-key',
+        'Button color'     => 'Blue',
+        'Background color' => 'Gray'
+      }
+    })
+  end
+
+  it "sets properties when identified" do
+    stub_request(:get, %r{https://trk.kissmetrics.com/s}).to_return(:body => "")
+
+    subject.identify('user@example.com')
+    subject.set({
+      'Button color'     => 'Blue',
+      'Background color' => 'Gray'
+    })
+
+    WebMock.should have_requested(:get, "https://trk.kissmetrics.com/s").with({
+      :query => {
+        :_k                => 'my-api-key',
+        :_p                => 'user@example.com',
+        'Button color'     => 'Blue',
+        'Background color' => 'Gray'
+      }
+    })
+  end
 end
