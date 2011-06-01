@@ -3,18 +3,18 @@ require 'net/https'
 require 'cgi'
 
 class Kissmetrics
+  attr_reader :api_key
+
   def initialize(api_key)
     @api_key = api_key
   end
-
-  attr_reader :api_key
 
   def identify(identity)
     @identity = identity
   end
 
-  def record(event, params={})
-    request('/e', params.merge({
+  def record(event, properties={})
+    request('/e', properties.merge({
       '_n' => event
     }))
   end
