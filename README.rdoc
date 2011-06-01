@@ -2,6 +2,14 @@
 
 Description goes here.
 
+== Usage
+
+  KM.init(api_key)
+  KM.identify('email@example.com')
+  KM.record('action', {:property => :value})
+  KM.set({:k => :v, :k2 => :v2})
+  KM.alias("name", "alias")
+
 == Contributing to kissmetrics
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
@@ -16,4 +24,3 @@ Description goes here.
 
 Copyright (c) 2011 Jason Morrison. See LICENSE.txt for
 further details.
-
