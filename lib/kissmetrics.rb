@@ -51,10 +51,16 @@ class Kissmetrics
     query['_k'] = @api_key
     query['_p'] = @identity if @identity
 
-    hash_to_query_string(query)
+    QueryStringHash.new(query)
   end
 
-  def hash_to_query_string(hash)
-    hash.collect { |k,v| "#{k}=#{CGI.escape(v.to_s)}" }.join('&')
+  class QueryStringHash
+    def initialize(hash)
+      @hash = hash
+    end
+
+    def to_s
+      @hash.collect { |key, value| "#{key}=#{CGI.escape(value.to_s)}" }.join('&')
+    end
   end
 end
