@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jason Morrison"]
-  s.date = %q{2011-06-01}
+  s.date = %q{2011-06-02}
   s.description = %q{Use the KISSmetrics HTTP API to identify and alias users, track events, and set properties.}
   s.email = %q{jmorrison@thoughtbot.com}
   s.extra_rdoc_files = [
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "kissmetrics.gemspec",
     "lib/kissmetrics.rb",
     "spec/kissmetrics_spec.rb",
     "spec/spec_helper.rb"
