@@ -4,11 +4,11 @@ This is a very simple wrapper around the KISSmetrics HTTP API: http://support.ki
 
 == Usage
 
-  kissmetrics = Kissmetrics.new('api-key-here')
-  kissmetrics.identify('user_identity')
+  kissmetrics = Kissmetrics::HttpClient.new('api-key-here')
   kissmetrics.alias('old_identity', 'new_identity')
-  kissmetrics.set({ 'some property' => 'some value', 'another property' => 'another value' })
-  kissmetrics.record('action', { 'Property' => 'Value' })
+  kissmetrics.set('identity', { 'some property' => 'some value', 'another property' => 'another value' })
+  kissmetrics.record('identity', 'action', { 'Property' => 'Value' })
+
 
 == Contributing to kissmetrics
 
