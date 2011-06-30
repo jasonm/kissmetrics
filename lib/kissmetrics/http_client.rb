@@ -61,7 +61,7 @@ module Kissmetrics
 
       def to_s
         @hash.collect do |key, value|
-          "#{key}=#{CGI.escape(value.to_s)}"
+          "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
         end.join('&')
       end
     end

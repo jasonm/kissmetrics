@@ -67,17 +67,28 @@ describe Kissmetrics::HttpClient, "setting properties" do
 
   it "sets properties when unidentified" do
     subject.set('identity', {
-      'Button color'     => 'Blue',
-      'Background color' => 'Gray'
+      'Button'     => 'Blue',
+      'Background' => 'Gray'
     })
 
     WebMock.should have_requested(:get, "https://trk.kissmetrics.com/s").with({
       :query => {
-        :_k                => 'my-api-key',
-        :_p                => 'identity',
-        'Button color'     => 'Blue',
-        'Background color' => 'Gray'
+        :_k          => 'my-api-key',
+        :_p          => 'identity',
+        'Button'     => 'Blue',
+        'Background' => 'Gray'
       }
+    })
+  end
+
+  it "escapes keys and values" do
+    http = stub('http', :use_ssl= => true, :get => true)
+    Net::HTTP.stub(:new => http)
+
+    http.should_receive(:get).with(%r{Some\+property=Some\+value})
+
+    subject.set('identity', {
+      'Some property' => 'Some value'
     })
   end
 end
